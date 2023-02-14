@@ -33,7 +33,7 @@ namespace SICIT.API.Controllers
                 EventLog.WriteEntry("Error al ejecutar Entidades - GetEntidades: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
-            return Json(success.ResponseDataEnumerable);
+            return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == true).DistinctBy(x => x.CVE_ID_ENT));
         }
 
 
