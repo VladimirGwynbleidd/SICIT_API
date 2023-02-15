@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SICIT.API.ENTITIES
 {
-    public class Perfil
+    public class Perfiles
     {
         public int ID_PERFIL { get; set; }
         public string DESCRIPCION_PERFIL { get; set; }

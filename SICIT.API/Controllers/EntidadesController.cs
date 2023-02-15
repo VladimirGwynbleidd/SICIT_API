@@ -127,12 +127,7 @@ namespace SICIT.API.Controllers
                 EventLog.WriteEntry("Error al ejecutar Usuarios - ObtenerUsuarios: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
-            return Json(success
-
-
-
-
-                );
+            return Json(success);
         }
 
         // PUT: api/Entidades/5
@@ -157,12 +152,7 @@ namespace SICIT.API.Controllers
                 EventLog.WriteEntry("Error al ejecutar Usuarios - ObtenerUsuarios: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
-            return Json(success
-
-
-
-
-                );
+            return Json(success);
         }
 
     }

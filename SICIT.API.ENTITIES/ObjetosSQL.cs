@@ -70,6 +70,9 @@ namespace SICIT.API.ENTITIES
 
         //******************************************Perfil***************************************************
         public const string sp_obtenerPerfil = "SPS_SIC_SEG_PERFIL";
+        public const string sp_insertarPerfil = "SPI_SIC_SEG_ALTA_PERFIL";
+        public const string sp_actualizarPerfil = "SPU_SIC_SEG_ACTUALIZA_PERFIL";
+        public const string sp_eliminarPerfil = "SPU_SIC_SEG_ELIMINA_PERFIL";
 
     }
 }

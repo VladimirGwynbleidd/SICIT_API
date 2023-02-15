@@ -1,4 +1,5 @@
-﻿using SICIT.API.BI.Interface;
+﻿using SICIT.API.BI;
+using SICIT.API.BI.Interface;
 using SICIT.API.ENTITIES;
 using SICIT.API.Interface;
 using SICIT.API.UTILITIES;
@@ -21,8 +22,8 @@ namespace SICIT.API.Controllers
         [Route("Api/Perfil/GetPerfil")]
         public IHttpActionResult GetPerfil()
         {
-            ICatalogo<Perfil> CatalogoPerfil= new PerfilCatalogo();
-            Success<Perfil> success;
+            ICatalogo<Perfiles> CatalogoPerfil= new PerfilesCatalogo();
+            Success<Perfiles> success;
 
             try
             {
@@ -40,8 +41,8 @@ namespace SICIT.API.Controllers
         [Route("Api/Perfil/GetTipoPerfilVigentes")]
         public IHttpActionResult GetTipoPerfilVigentes()
         {
-            ICatalogo<Perfil> CatalogoPerfil = new PerfilCatalogo();
-            Success<Perfil> success;
+            ICatalogo<Perfiles> CatalogoPerfil = new PerfilesCatalogo();
+            Success<Perfiles> success;
 
             try
             {
@@ -61,8 +62,8 @@ namespace SICIT.API.Controllers
         [Route("Api/Perfil/GetTipoPerfilHistorial")]
         public IHttpActionResult GetTipoPerfilHistorial()
         {
-            ICatalogo<Perfil> CatalogoPerfil = new PerfilCatalogo();
-            Success<Perfil> success;
+            ICatalogo<Perfiles> CatalogoPerfil = new PerfilesCatalogo();
+            Success<Perfiles> success;
 
             try
             {
@@ -83,18 +84,63 @@ namespace SICIT.API.Controllers
         }
 
         // POST: api/Perfiles
-        public void Post([FromBody]string value)
+        [HttpPost]
+        [Route("Api/Perfiles/Post")]
+        public IHttpActionResult Post([FromBody] Perfiles perfiles)
         {
+            ICatalogo<Perfiles> CatalogoPerfiles = new PerfilesCatalogo();
+            Success<Perfiles> success;
+
+            try
+            {
+                success = CatalogoPerfiles.Insert(perfiles);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Perfiles - Insert: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
 
         // PUT: api/Perfiles/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        [Route("Api/Perfiles/Put")]
+        public IHttpActionResult Put([FromBody] Perfiles perfiles)
         {
+            ICatalogo<Perfiles> CatalogoPerfiles = new PerfilesCatalogo();
+            Success<Perfiles> success;
+
+            try
+            {
+                success = CatalogoPerfiles.Update(perfiles);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Perfiles - Put: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
 
         // DELETE: api/Perfiles/5
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("Api/Perfiles/Delete")]
+        public IHttpActionResult Delete([FromBody] Perfiles perfiles)
         {
+            ICatalogo<Perfiles> CatalogoPerfiles = new PerfilesCatalogo();
+            Success<Perfiles> success;
+
+            try
+            {
+                success = CatalogoPerfiles.Delete(perfiles);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Perfiles - Delete: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
     }
 }

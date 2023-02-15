@@ -126,7 +126,7 @@ namespace SICIT.API.Interface
         Success<T> Delete(T parameters);
     }
 
-    public interface IPerfil<T> where T : class
+    public interface IPerfiles<T> where T : class
     {
         Success<T> Get(T parameters);
         Success<T> Add(T parameters);

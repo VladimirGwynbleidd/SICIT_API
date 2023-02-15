@@ -52,7 +52,7 @@
     <Compile Include="Interface\BitacoraSesionesCatalogo.cs" />
     <Compile Include="Interface\EntidadesCatalago.cs" />
     <Compile Include="Interface\ICatalogo.cs" />
-    <Compile Include="Interface\PerfilCatalogo.cs" />
+    <Compile Include="Interface\PerfilesCatalogo.cs" />
     <Compile Include="Interface\PuestosCatalogo.cs" />
     <Compile Include="Interface\TipoEntidadCatalogo.cs" />
     <Compile Include="Interface\UsuariosCatalogo.cs" />
