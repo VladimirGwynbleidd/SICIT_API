@@ -8,7 +8,6 @@ namespace SICIT.API.ENTITIES
 {
     public class Perfiles
     {
-        //Cambio CLL
         public int ID_PERFIL { get; set; }
         public string DESCRIPCION_PERFIL { get; set; }
         public int VIG_FLAG { get; set; }
