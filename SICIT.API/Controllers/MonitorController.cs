@@ -15,9 +15,9 @@ namespace SICIT.API.Controllers
     [Route("api/[controller]/[action]")]
     public class MonitorController : ApiController
     {
-        [HttpGet]
+        [HttpPost]
         [Route("api/Monitor/GetMonitor")]
-        public IHttpActionResult GetMonitor()
+        public IHttpActionResult GetMonitor(MonitorEntidad ent)
         {
 
             ICatalogo<MonitorEntidad> CatalogoMonitor = new MonitorCatalogo();
@@ -25,7 +25,7 @@ namespace SICIT.API.Controllers
 
             try
             {
-                success = CatalogoMonitor.Get();
+                success = CatalogoMonitor.Get(ent);
             }
             catch (Exception ex)
             {

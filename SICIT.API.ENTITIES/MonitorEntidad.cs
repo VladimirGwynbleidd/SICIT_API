@@ -15,5 +15,8 @@ namespace SICIT.API.ENTITIES
         public string FECH_FIN_OPER { get; set; }
         public string FECH_PROP_TERM { get; set; }
         public bool VIG_FLAG { get; set; }
+        public string USUARIO { get; set; }
+        public decimal REVISADO { get; set; }
+
     }
 }
