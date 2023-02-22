@@ -79,5 +79,8 @@ namespace SICIT.API.ENTITIES
         public const string sp_actualizarPerfil = "SPU_SIC_SEG_ACTUALIZA_PERFIL";
         public const string sp_eliminarPerfil = "SPU_SIC_SEG_ELIMINA_PERFIL";
 
+        //******************************************MONITOR***************************************************
+        public const string sp_obtenerMonitor = "SPS_SIC_MEN_MONITOR";
+
     }
 }
