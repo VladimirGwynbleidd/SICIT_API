@@ -1,4 +1,5 @@
-﻿using SICIT.API.BI.Interface;
+﻿using SICIT.API.BI;
+using SICIT.API.BI.Interface;
 using SICIT.API.ENTITIES;
 using SICIT.API.Interface;
 using SICIT.API.UTILITIES;
@@ -84,18 +85,64 @@ namespace SICIT.API.Controllers
         }
 
         // POST: api/Puestos
-        public void Post([FromBody]string value)
+        [HttpPost]
+        [Route("Api/Puestos/Post")]
+        public IHttpActionResult Post([FromBody]Puestos puestos)
         {
+
+            ICatalogo<Puestos> CatalogoPuestos = new PuestosCatalogo();
+            Success<Puestos> success;
+
+            try
+            {
+                success = CatalogoPuestos.Insert(puestos);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Perfiles - Insert: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
 
         // PUT: api/Puestos/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        [Route("Api/Puestos/Put")]
+        public IHttpActionResult Put([FromBody] Puestos puestos)
         {
+            ICatalogo<Puestos> CatalogoPuestos = new PuestosCatalogo();
+            Success<Puestos> success;
+
+            try
+            {
+                success = CatalogoPuestos.Update(puestos);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Puestos - Update: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
 
         // DELETE: api/Puestos/5
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("Api/Puestos/Delete")]
+        public IHttpActionResult Delete([FromBody] Puestos puestos)
         {
+            ICatalogo<Puestos> CatalogoPuestos = new PuestosCatalogo();
+            Success<Puestos> success;
+
+            try
+            {
+                success = CatalogoPuestos.Delete(puestos);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Puestos - Delete: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
     }
 }

@@ -15,5 +15,8 @@ namespace SICIT.API.ENTITIES
         public int VIG_FLAG { get; set; }
         public int ID_T_ENT { get; set; }
         public int CVE_ID_ENTAS { get; set; }
+
+        public int CVE_ID_ENT { get; set; }
+
     }
 }

@@ -14,7 +14,7 @@ namespace SICIT.API.BI.Interface
 
         public Success<Puestos> Delete(Puestos parameters)
         {
-            throw new NotImplementedException();
+            return cls.Delete(parameters);
         }
 
         public Success<Puestos> Get(Puestos param = null)
@@ -29,12 +29,12 @@ namespace SICIT.API.BI.Interface
 
         public Success<Puestos> Insert(Puestos parameters)
         {
-            throw new NotImplementedException();
+            return cls.Insert(parameters);
         }
 
         public Success<Puestos> Update(Puestos parameters)
         {
-            throw new NotImplementedException();
+            return cls.Update(parameters);
         }
     }
 }

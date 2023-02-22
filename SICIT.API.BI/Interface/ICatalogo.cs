@@ -96,8 +96,9 @@ namespace SICIT.API.Interface
 
     public interface IAreas<T> where T : class
     {
-        Success<T> Get(T parameters);
-        Success<T> Add(T parameters);
+        Success<T> Get(T param = null);
+        Success<T> GetById(T parameters);
+        Success<T> Insert(T parameters);
         Success<T> Update(T parameters);
         Success<T> Delete(T parameters);
     }

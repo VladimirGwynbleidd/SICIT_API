@@ -27,7 +27,7 @@ namespace SICIT.API.BI.Interface
 
         public Success<Entidades> GetId(int id)
         {
-            throw new NotImplementedException();
+            return cls.GetId(id);
         }
 
 

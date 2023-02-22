@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SICIT.API.BI.Interface
 {
-    public class AreasCatalogo : ICatalogo<Areas>
+    public class AreasCatalogo : IAreas<Areas>
     {
         private readonly AreasBI cls = new AreasBI();
         public Success<Areas> Delete(Areas parameters)
@@ -22,9 +22,9 @@ namespace SICIT.API.BI.Interface
             return cls.Get();
         }
 
-        public Success<Areas> GetId(int id)
+        public Success<Areas> GetById(Areas parameters)
         {
-            throw new NotImplementedException();
+            return cls.GetById(parameters);
         }
 
         public Success<Areas> Insert(Areas parameters)

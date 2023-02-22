@@ -22,7 +22,7 @@ namespace SICIT.API.Controllers
         [Route("Api/Areas/GetAreas")]
         public IHttpActionResult GetAreas()
         {
-            ICatalogo<Areas> CatalogoAreas= new AreasCatalogo();
+            IAreas<Areas> CatalogoAreas= new AreasCatalogo();
             Success<Areas> success;
 
             try
@@ -44,7 +44,7 @@ namespace SICIT.API.Controllers
         public IHttpActionResult GetTipoAreasVigentes()
         {
 
-            ICatalogo<Areas> CatalogoAreas = new AreasCatalogo();
+            IAreas<Areas> CatalogoAreas = new AreasCatalogo();
             Success<Areas> success;
 
             try
@@ -66,7 +66,7 @@ namespace SICIT.API.Controllers
         public IHttpActionResult GetTipoAreasHistorial()
         {
 
-            ICatalogo<Areas> CatalogoAreas = new AreasCatalogo();
+            IAreas<Areas> CatalogoAreas = new AreasCatalogo();
             Success<Areas> success;
 
             try
@@ -82,10 +82,25 @@ namespace SICIT.API.Controllers
         }
 
 
-        // GET: api/Areas/5
-        public string Get(int id)
+        // POST: api/Areas/5
+        [HttpPost]
+        [Route("Api/Areas/GetAreasById")]
+        public IHttpActionResult GetAreasById([FromBody] Areas areas)
         {
-            return "value";
+
+            IAreas<Areas> CatalogoAreas = new AreasCatalogo();
+            Success<Areas> success;
+
+            try
+            {
+                success = CatalogoAreas.GetById(areas);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Areas - GetAreasById: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success.ResponseDataEnumerable);
         }
 
         // POST: api/Areas

@@ -18,6 +18,25 @@ namespace SICIT.API.BI
         }
 
 
+        public Success<Entidades> GetId(int id)
+        {
+            Func<
+                FuncionDelegado<Entidades>.ObtenerResultado,
+                string,
+                IDictionary<string, object>,
+                Success<Entidades>> response = FuncionDelegado<Entidades>.obtenerListaResultado;
+
+
+            Dictionary<string, object> values = new Dictionary<string, object>
+                    {
+                        { "@ID_T_ENT", id},
+            
+                    };
+
+            return response(new SqlHelperFactory().ExecuteList<Entidades>, ObjetosSQL.spGetIdEntidades, values);
+        }
+
+
         public Success<Entidades> Insert(Entidades parameters)
         {
             Func<

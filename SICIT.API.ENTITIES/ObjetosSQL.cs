@@ -43,6 +43,7 @@ namespace SICIT.API.ENTITIES
 
 
         public const string spGetEntidades = "SPS_SIC_SEG_ENTIDAD";
+        public const string spGetIdEntidades = "SPS_SIC_OBTEN_ENTIDAD";
         public const string spInsertEntidades = "SPI_SIC_SEG_ENTIDAD";
         public const string spUpdateEntidades = "SPU_SIC_SEG_ENTIDAD";
         public const string spDeleteEntidades = "SPU_SIC_SEG_ENTIDAD_BAJA";
@@ -58,9 +59,13 @@ namespace SICIT.API.ENTITIES
 
         //******************************************AREAS***************************************************
         public const string sp_obtenerAreas = "SPS_SIC_SEG_AREAS";
+        public const string sp_GetIdAreas = "SPS_SIC_OBTEN_AREA";
 
         //******************************************PUESTOS***************************************************
         public const string sp_obtenerPuestos = "SPS_SIC_SEG_PUESTOS";
+        public const string sp_InsertarPuestos = "SPI_SIC_SEG_ALTA_PUESTO";
+        public const string sp_ActualizarPuestos = "SPU_SIC_SEG_ACTUALIZA_PUESTO";
+        public const string sp_EliminarPuestos = "SPU_SIC_SEG_ELIMINA_PUESTO";
 
 
         //******************************************BITACORA***************************************************

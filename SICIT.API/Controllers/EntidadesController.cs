@@ -105,10 +105,26 @@ namespace SICIT.API.Controllers
 
 
         // GET: api/Entidades/5
-        public string Get(int id)
+        [HttpPost]
+        [Route("Api/Entidades/GetEntidadesById")]
+        public IHttpActionResult GetEntidadesById([FromBody] Entidades entidades)
         {
-            return "value";
+
+            ICatalogo<Entidades> CatalogoEntidades = new EntidadesCatalago();
+            Success<Entidades> success;
+
+            try
+            {
+                success = CatalogoEntidades.GetId(entidades.ID_T_ENT);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Entidades - GetEntidadesById: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success.ResponseDataEnumerable);
         }
+
 
         // POST: api/Entidades
         [HttpPost]
