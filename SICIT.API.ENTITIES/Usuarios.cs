@@ -35,12 +35,10 @@ namespace SICIT.API.ENTITIES
         public string TELEFONO { get; set; }
         public string EMAIL { get; set; }
         public int PRIMERA_SESION { get; set; }
-        public int VIG_FLAG { get; set; }
+        public bool VIG_FLAG { get; set; }
         public DateTime FECH_INI_VIG { get; set; }
         public DateTime FECH_FIN_VIG { get; set; }
         public int ENVIO_EMAIL { get; set; }
-
-
         public string DESCRIPCION_PERFIL { get; set; }
         public string DESC_T_ENT { get; set; }
         public string SIGLAS_ENT { get; set; }

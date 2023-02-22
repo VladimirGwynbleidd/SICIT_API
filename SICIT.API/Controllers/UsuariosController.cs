@@ -55,7 +55,7 @@ namespace SICIT.API.Controllers
                 EventLog.WriteEntry("Error al ejecutar Usuarios - GetUsuariosVigentes: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
-            return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == 1));
+            return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == true));
         }
 
 
@@ -77,7 +77,7 @@ namespace SICIT.API.Controllers
                 EventLog.WriteEntry("Error al ejecutar Usuarios - GetUsuariosHistorial: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
-            return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == 0));
+            return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == false));
         }
 
 
