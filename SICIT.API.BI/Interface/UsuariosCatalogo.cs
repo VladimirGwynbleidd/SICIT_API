@@ -41,7 +41,7 @@ namespace SICIT.BI.Interface
 
         public Success<Usuarios> Insert(Usuarios parameters)
         {
-            throw new System.NotImplementedException();
+            return cls.Insert(parameters);
         }
 
         public Success<Usuarios> Update(Usuarios parameters)

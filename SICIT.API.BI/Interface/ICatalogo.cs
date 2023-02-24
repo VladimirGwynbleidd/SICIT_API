@@ -106,9 +106,10 @@ namespace SICIT.API.Interface
     public interface IPuestos<T> where T : class
     {
         Success<T> Get(T parameters);
-        Success<T> Add(T parameters);
+        Success<T> Insert(T parameters);
         Success<T> Update(T parameters);
         Success<T> Delete(T parameters);
+        Success<T> GetId(T parameters);
     }
 
     public interface IBitacoraAcciones<T> where T : class

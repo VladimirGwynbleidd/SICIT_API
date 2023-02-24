@@ -52,6 +52,8 @@ namespace SICIT.API.ENTITIES
 
         //******************************************USUARIOS***************************************************
         public const string sp_obtenerUsuarios = "SPS_SIC_SEG_USUARIOS";
+        public const string sp_InsertUsuario = "";
+
 
 
         //******************************************TIPO ENTIDAD***************************************************
@@ -65,6 +67,7 @@ namespace SICIT.API.ENTITIES
         public const string sp_GetIdAreas = "SPS_SIC_OBTEN_AREA";
 
         //******************************************PUESTOS***************************************************
+        public const string sp_obtenerPuestoID = "SPS_SIC_OBTEN_PUESTO";
         public const string sp_obtenerPuestos = "SPS_SIC_SEG_PUESTOS";
         public const string sp_InsertarPuestos = "SPI_SIC_SEG_ALTA_PUESTO";
         public const string sp_ActualizarPuestos = "SPU_SIC_SEG_ACTUALIZA_PUESTO";
