@@ -16,5 +16,65 @@ namespace SICIT.API.BI
                 Success<TipoEntidad>> response = FuncionDelegado<TipoEntidad>.obtenerListaResultado;
             return response(new SqlHelperFactory().ExecuteList<TipoEntidad>, ObjetosSQL.sp_obtenerTipoEntidad, null);
         }
+
+        public Success<TipoEntidad> Insert(TipoEntidad parameters)
+        {
+            Func<
+                FuncionDelegado<TipoEntidad>.ObtenerResultadoString,
+                string,
+                Dictionary<string, object>,
+                TipoEntidad,
+                Success<TipoEntidad>> response = FuncionDelegado<TipoEntidad>.obtenerResultadoString;
+
+            Dictionary<string, object> values = new Dictionary<string, object>
+                    {
+                        //{ "@ID_PUESTO", parameters.ID_PUESTO},
+                        { "@DESCRIPCION_PUESTO", parameters.DESC_T_ENT},
+                        { "@ID_T_ENT", parameters.ID_T_ENT},
+
+                    };
+
+            return response(new SqlHelperFactory().ExecuteNonQueryString, ObjetosSQL.sp_InsertarTipoEntidad, values, parameters);
+        }
+
+
+        public Success<TipoEntidad> Update(TipoEntidad parameters)
+        {
+            Func<
+                FuncionDelegado<TipoEntidad>.ObtenerResultadoString,
+                string,
+                Dictionary<string, object>,
+                TipoEntidad,
+                Success<TipoEntidad>> response = FuncionDelegado<TipoEntidad>.obtenerResultadoString;
+
+            Dictionary<string, object> values = new Dictionary<string, object>
+                    {
+                        { "@DESCRIPCION_PUESTO", parameters.DESC_T_ENT},
+                        { "@ID_T_ENT", parameters.ID_T_ENT},
+
+                    };
+
+            return response(new SqlHelperFactory().ExecuteNonQueryString, ObjetosSQL.sp_ActualizarTipoEntidad, values, parameters);
+        }
+
+
+        public Success<TipoEntidad> Delete(TipoEntidad parameters)
+        {
+            Func<
+                FuncionDelegado<TipoEntidad>.ObtenerResultadoString,
+                string,
+                Dictionary<string, object>,
+                TipoEntidad,
+                Success<TipoEntidad>> response = FuncionDelegado<TipoEntidad>.obtenerResultadoString;
+
+            Dictionary<string, object> values = new Dictionary<string, object>
+                    {
+                        { "@DESCRIPCION_PUESTO", parameters.DESC_T_ENT},
+                        { "@ID_T_ENT", parameters.ID_T_ENT},
+
+                    };
+
+            return response(new SqlHelperFactory().ExecuteNonQueryString, ObjetosSQL.sp_EliminarTipoEntidad, values, parameters);
+        }
     }
 }

@@ -59,6 +59,28 @@ namespace SICIT.API.BI
         }
 
 
+        public Success<Entidades> Update(Entidades parameters)
+        {
+            Func<
+                FuncionDelegado<Entidades>.ObtenerResultadoString,
+                string,
+                Dictionary<string, object>,
+                Entidades,
+                Success<Entidades>> response = FuncionDelegado<Entidades>.obtenerResultadoString;
+
+            Dictionary<string, object> values = new Dictionary<string, object>
+                    {
+                        { "@ID_T_ENT", parameters.ID_T_ENT},
+                        { "@CVE_ID_ENT", parameters.CVE_ID_ENT},
+                        { "@DESC_ENT", parameters.DESC_ENT},
+                        { "@SIGLAS_ENT", parameters.SIGLAS_ENT}
+
+                    };
+
+            return response(new SqlHelperFactory().ExecuteNonQueryString, ObjetosSQL.spUpdateEntidades, values, parameters);
+        }
+
+
 
         public Success<Entidades> Delete(Entidades parameters)
         {
@@ -72,9 +94,7 @@ namespace SICIT.API.BI
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
                         { "@ID_T_ENT", parameters.ID_T_ENT},
-                        { "@CVE_ID_ENT", parameters.CVE_ID_ENT},
-                        { "@DESC_ENT", string.Empty},
-                        { "@SIGLAS_ENT", string.Empty}
+                        { "@CVE_ID_ENT", parameters.CVE_ID_ENT}
 
                     };
 
