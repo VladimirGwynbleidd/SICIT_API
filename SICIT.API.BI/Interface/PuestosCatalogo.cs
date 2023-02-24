@@ -8,9 +8,11 @@ using System.Threading.Tasks;
 
 namespace SICIT.API.BI.Interface
 {
-    public class PuestosCatalogo : ICatalogo<Puestos>
+    public class PuestosCatalogo : IPuestos<Puestos>
     {
         private readonly PuestosBI cls = new PuestosBI();
+
+
 
         public Success<Puestos> Delete(Puestos parameters)
         {
@@ -22,9 +24,15 @@ namespace SICIT.API.BI.Interface
             return cls.Get();
         }
 
-        public Success<Puestos> GetId(int id)
+
+        //public Success<Puestos> GetById(Puestos parameters)
+        //{
+            
+        //}
+
+        public Success<Puestos> GetId(Puestos parameters)
         {
-            throw new NotImplementedException();
+            return cls.GetById(parameters);
         }
 
         public Success<Puestos> Insert(Puestos parameters)

@@ -43,6 +43,26 @@ namespace SICIT.API.BI
         }
 
 
+        public Success<Puestos> GetById(Puestos parameters)
+        {
+            Func<
+                FuncionDelegado<Puestos>.ObtenerResultado,
+                string,
+                IDictionary<string, object>,
+                Success<Puestos>> response = FuncionDelegado<Puestos>.obtenerListaResultado;
+
+
+            Dictionary<string, object> values = new Dictionary<string, object>
+                    {
+                        { "@ID_T_ENT", parameters.ID_T_ENT},
+                        { "@ID_AREA",parameters.ID_AREA },
+                        { "@CVE_ID_ENT",parameters.CVE_ID_ENT },
+                    };
+
+            return response(new SqlHelperFactory().ExecuteList<Puestos>, ObjetosSQL.sp_obtenerPuestoID, values);
+        }
+
+
         public Success<Puestos> Update(Puestos parameters)
         {
             Func<

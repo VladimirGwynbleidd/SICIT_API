@@ -36,8 +36,6 @@ namespace SICIT.API.Controllers
         }
 
 
-
-
         [HttpGet]
         [Route("Api/Usuarios/GetUsuariosVigentes")]
         public IHttpActionResult GetUsuariosVigentes()
@@ -81,25 +79,26 @@ namespace SICIT.API.Controllers
         }
 
 
-        // GET: api/Usuarios/5
-        public string Get(int id)
+        [HttpPost]
+        [Route("Api/Usuarios/Insert")]
+        public IHttpActionResult Post([FromBody] Usuarios usuarios)
         {
-            return "value";
+
+            ICatalogo<Usuarios> CatalogoUsuarios = new UsuariosCatalogo();
+            Success<Usuarios> success;
+
+            try
+            {
+                success = CatalogoUsuarios.Insert(usuarios);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Usuarios - Insert: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
 
-        // POST: api/Usuarios
-        public void Post([FromBody]string value)
-        {
-        }
 
-        // PUT: api/Usuarios/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Usuarios/5
-        public void Delete(int id)
-        {
-        }
     }
 }

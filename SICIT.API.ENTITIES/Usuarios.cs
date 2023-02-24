@@ -44,10 +44,10 @@ namespace SICIT.API.ENTITIES
         public string SIGLAS_ENT { get; set; }
         public string DESC_AREA { get; set; }
         public string DESCRIPCION_PUESTO { get; set; }
-        
+        public string CONTRASENA { get; set; }
 
 
-        
+
 
 
 

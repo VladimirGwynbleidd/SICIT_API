@@ -19,12 +19,12 @@ namespace SICIT.API.Controllers
         [Route("Api/Puestos/GetPuestos")]
         public IHttpActionResult GetPuestos()
         {
-            ICatalogo<Puestos> CatalogoPuestos = new PuestosCatalogo();
+            IPuestos<Puestos> CatalogoPuestos = new PuestosCatalogo();
             Success<Puestos> success;
 
             try
             {
-                success = CatalogoPuestos.Get();
+                success = CatalogoPuestos.Get(null);
             }
             catch (Exception ex)
             {
@@ -40,12 +40,12 @@ namespace SICIT.API.Controllers
         public IHttpActionResult GetTipoPuestosVigentes()
         {
 
-            ICatalogo<Puestos> CatalogpPuestos = new PuestosCatalogo();
+            IPuestos<Puestos> CatalogpPuestos = new PuestosCatalogo();
             Success<Puestos> success;
 
             try
             {
-                success = CatalogpPuestos.Get();
+                success = CatalogpPuestos.Get(null);
             }
             catch (Exception ex)
             {
@@ -62,12 +62,12 @@ namespace SICIT.API.Controllers
         public IHttpActionResult GetTipoPuestosHistorial()
         {
 
-            ICatalogo<Puestos> CatalogoPuestos = new PuestosCatalogo();
+            IPuestos<Puestos> CatalogoPuestos = new PuestosCatalogo();
             Success<Puestos> success;
 
             try
             {
-                success = CatalogoPuestos.Get();
+                success = CatalogoPuestos.Get(null);
             }
             catch (Exception ex)
             {
@@ -78,19 +78,34 @@ namespace SICIT.API.Controllers
         }
 
 
-        // GET: api/Puestos/5
-        public string Get(int id)
+        [HttpPost]
+        [Route("Api/Puestos/GetPuestoById")]
+        public IHttpActionResult GetPuestoById([FromBody] Puestos puestos)
         {
-            return "value";
-        }
 
+            IPuestos<Puestos> CatalogoPuestos = new PuestosCatalogo();
+            Success<Puestos> success;
+
+
+            try
+            {
+                success = CatalogoPuestos.GetId(puestos);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Areas - GetAreasById: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success.ResponseDataEnumerable);
+
+        }
         // POST: api/Puestos
         [HttpPost]
         [Route("Api/Puestos/Post")]
         public IHttpActionResult Post([FromBody]Puestos puestos)
         {
 
-            ICatalogo<Puestos> CatalogoPuestos = new PuestosCatalogo();
+            IPuestos<Puestos> CatalogoPuestos = new PuestosCatalogo();
             Success<Puestos> success;
 
             try
@@ -110,7 +125,7 @@ namespace SICIT.API.Controllers
         [Route("Api/Puestos/Put")]
         public IHttpActionResult Put([FromBody] Puestos puestos)
         {
-            ICatalogo<Puestos> CatalogoPuestos = new PuestosCatalogo();
+            IPuestos<Puestos> CatalogoPuestos = new PuestosCatalogo();
             Success<Puestos> success;
 
             try
@@ -130,7 +145,7 @@ namespace SICIT.API.Controllers
         [Route("Api/Puestos/Delete")]
         public IHttpActionResult Delete([FromBody] Puestos puestos)
         {
-            ICatalogo<Puestos> CatalogoPuestos = new PuestosCatalogo();
+            IPuestos<Puestos> CatalogoPuestos = new PuestosCatalogo();
             Success<Puestos> success;
 
             try
