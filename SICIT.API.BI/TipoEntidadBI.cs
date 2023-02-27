@@ -29,8 +29,8 @@ namespace SICIT.API.BI
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
                         //{ "@ID_PUESTO", parameters.ID_PUESTO},
-                        { "@DESCRIPCION_PUESTO", parameters.DESC_T_ENT},
-                        { "@ID_T_ENT", parameters.ID_T_ENT},
+                        { "@DESC_T_ENT", parameters.DESC_T_ENT},
+                        { "@ESPC_T_ENT", parameters.ESPC_T_ENT},
 
                     };
 
@@ -49,7 +49,8 @@ namespace SICIT.API.BI
 
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
-                        { "@DESCRIPCION_PUESTO", parameters.DESC_T_ENT},
+                         { "@DESC_T_ENT", parameters.DESC_T_ENT},
+                        { "@ESPC_T_ENT", parameters.ESPC_T_ENT},
                         { "@ID_T_ENT", parameters.ID_T_ENT},
 
                     };
@@ -69,7 +70,6 @@ namespace SICIT.API.BI
 
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
-                        { "@DESCRIPCION_PUESTO", parameters.DESC_T_ENT},
                         { "@ID_T_ENT", parameters.ID_T_ENT},
 
                     };

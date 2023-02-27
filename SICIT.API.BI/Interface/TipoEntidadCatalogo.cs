@@ -13,7 +13,7 @@ namespace SICIT.API.BI.Interface
         private readonly TipoEntidadBI cls = new TipoEntidadBI();
         public Success<TipoEntidad> Delete(TipoEntidad parameters)
         {
-            throw new NotImplementedException();
+            return cls.Delete(parameters);
         }
 
         public Success<TipoEntidad> Get(TipoEntidad param = null)
@@ -28,12 +28,12 @@ namespace SICIT.API.BI.Interface
 
         public Success<TipoEntidad> Insert(TipoEntidad parameters)
         {
-            throw new NotImplementedException();
+            return cls.Insert(parameters);
         }
 
         public Success<TipoEntidad> Update(TipoEntidad parameters)
         {
-            throw new NotImplementedException();
+            return cls.Update(parameters);
         }
     }
 }

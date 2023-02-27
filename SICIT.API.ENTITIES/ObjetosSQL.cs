@@ -65,6 +65,9 @@ namespace SICIT.API.ENTITIES
         //******************************************AREAS***************************************************
         public const string sp_obtenerAreas = "SPS_SIC_SEG_AREAS";
         public const string sp_GetIdAreas = "SPS_SIC_OBTEN_AREA";
+        public const string sp_InsertarAreas= "SPI_SIC_SEG_AREAS";
+        public const string sp_ActualizarAreas = "SPU_SIC_SEG_AREAS";
+        public const string sp_EliminarAreas = "SPU_SIC_SEG_AREAS_BAJA";
 
         //******************************************PUESTOS***************************************************
         public const string sp_obtenerPuestoID = "SPS_SIC_OBTEN_PUESTO";

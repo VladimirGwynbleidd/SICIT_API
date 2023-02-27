@@ -103,19 +103,65 @@ namespace SICIT.API.Controllers
             return Json(success.ResponseDataEnumerable);
         }
 
-        // POST: api/Areas
-        public void Post([FromBody]string value)
+        // POST: api/Areas/Post
+        [HttpPost]
+        [Route("Api/Areas/Post")]
+        public IHttpActionResult Post([FromBody] Areas areas)
         {
+
+            IAreas<Areas> CatalogoAreas = new AreasCatalogo();
+            Success<Areas> success;
+
+            try
+            {
+                success = CatalogoAreas.Insert(areas);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Areas - Insert: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
 
         // PUT: api/Areas/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        [Route("Api/Areas/Put")]
+        public IHttpActionResult Put([FromBody] Areas areas)
         {
+            IAreas<Areas> CatalogoAreas = new AreasCatalogo();
+            Success<Areas> success;
+
+            try
+            {
+                success = CatalogoAreas.Update(areas);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Areas - Update: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
 
         // DELETE: api/Areas/5
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("Api/Areas/Delete")]
+        public IHttpActionResult Delete([FromBody] Areas areas)
         {
+            IAreas<Areas> CatalogoAreas = new AreasCatalogo();
+            Success<Areas> success;
+
+            try
+            {
+                success = CatalogoAreas.Delete(areas);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Areas - Delete: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
     }
 }
