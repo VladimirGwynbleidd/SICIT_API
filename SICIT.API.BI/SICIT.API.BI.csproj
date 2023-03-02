@@ -45,11 +45,13 @@
     <Compile Include="AreasBI.cs" />
     <Compile Include="BitacoraAccionesBI.cs" />
     <Compile Include="BitacoraSesionesBI.cs" />
+    <Compile Include="ConsultasBI.cs" />
     <Compile Include="EntidadesBI.cs" />
     <Compile Include="Interface\AccesoCatalogo.cs" />
     <Compile Include="Interface\AreasCatalogo.cs" />
     <Compile Include="Interface\BitacoraAccionesCatalogo.cs" />
     <Compile Include="Interface\BitacoraSesionesCatalogo.cs" />
+    <Compile Include="Interface\ConsultaCatalogo.cs" />
     <Compile Include="Interface\EntidadesCatalago.cs" />
     <Compile Include="Interface\ICatalogo.cs" />
     <Compile Include="Interface\MonitorCatalogo.cs" />

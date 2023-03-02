@@ -136,6 +136,7 @@
     <Compile Include="Controllers\AreasController.cs" />
     <Compile Include="Controllers\BitacoraAccionesController.cs" />
     <Compile Include="Controllers\BitacoraSesionesController.cs" />
+    <Compile Include="Controllers\ConsultasController.cs" />
     <Compile Include="Controllers\EntidadesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -183,6 +184,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Consultas\" />
     <Folder Include="Views\Entidades\" />
   </ItemGroup>
   <ItemGroup>

@@ -136,5 +136,13 @@ namespace SICIT.API.Interface
         Success<T> Delete(T parameters);
     }
 
+    public interface IConsultas<T> where T : class
+    {
+        Success<T> Get(T parameters= null);
+        Success<T> Add(T parameters);
+        Success<T> Update(T parameters);
+        Success<T> Delete(T parameters);
+    }
+
 }
 

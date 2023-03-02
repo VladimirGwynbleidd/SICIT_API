@@ -78,9 +78,9 @@ namespace SICIT.API.ENTITIES
 
 
         //******************************************BITACORA***************************************************
-        public const string sp_obtenerBitacoraAcciones = "SPS_SIC_SEG_BITACORA";
+        public const string sp_obtenerBitacoraAcciones = "SPS_SIC_SEG_BITACORA_ACCIONES";
         public const string sp_obtenerBitacoraSesiones = "SPS_SIC_SEG_SESIONES";
-
+        public const string sp_obtenerBitacoraSesionesFechas = "SPS_SIC_SEG_REGISTRO_SESIONES"; 
 
         //******************************************Perfil***************************************************
         public const string sp_obtenerPerfil = "SPS_SIC_SEG_PERFIL";
@@ -91,5 +91,7 @@ namespace SICIT.API.ENTITIES
         //******************************************MONITOR***************************************************
         public const string sp_obtenerMonitor = "SPS_SIC_MEN_MONITOR";
 
+        //******************************************MONITOR***************************************************
+        public const string sp_obtenerTipoConsulta = "SPS_SIC_CON_PAQUETES";
     }
 }
