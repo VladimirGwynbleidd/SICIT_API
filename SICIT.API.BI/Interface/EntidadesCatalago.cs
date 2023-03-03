@@ -33,7 +33,7 @@ namespace SICIT.API.BI.Interface
 
         public Success<Entidades> Update(Entidades parameters)
         {
-            throw new NotImplementedException();
+            return cls.Update(parameters);
         }
     }
 }

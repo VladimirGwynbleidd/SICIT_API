@@ -14,7 +14,7 @@ namespace SICIT.API.BI.Interface
         private readonly AreasBI cls = new AreasBI();
         public Success<Areas> Delete(Areas parameters)
         {
-            throw new NotImplementedException();
+            return cls.Delete(parameters);
         }
 
         public Success<Areas> Get(Areas param = null)
@@ -29,12 +29,12 @@ namespace SICIT.API.BI.Interface
 
         public Success<Areas> Insert(Areas parameters)
         {
-            throw new NotImplementedException();
+            return cls.Insert(parameters);
         }
 
         public Success<Areas> Update(Areas parameters)
         {
-            throw new NotImplementedException();
+            return cls.Update(parameters);
         }
     }
 }

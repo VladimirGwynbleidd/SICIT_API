@@ -27,7 +27,7 @@ namespace SICIT.API.BI.Interface
 
         //public Success<Puestos> GetById(Puestos parameters)
         //{
-            
+
         //}
 
         public Success<Puestos> GetId(Puestos parameters)

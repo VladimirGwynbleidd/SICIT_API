@@ -15,7 +15,7 @@ namespace SICIT.API.BI.Interface
 
         public Success<MonitorEntidad> Get(MonitorEntidad param = null)
         {
-           return cls.Get(param);
+            return cls.Get(param);
         }
 
         public Success<MonitorEntidad> GetId(int id)
