@@ -2,9 +2,6 @@
 using SICIT.API.ENTITIES;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SICIT.API.BI
 {
@@ -29,13 +26,20 @@ namespace SICIT.API.BI
                 Puestos,
                 Success<Puestos>> response = FuncionDelegado<Puestos>.obtenerResultadoString;
 
+            parameters.ID_ACTIVIDAD = (int)Enums.Actividad.AGREGAR_PUESTO;
+            parameters.ACCION = MensajesBitacora.mensajePuestoInsertar;
+
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
-                        //{ "@ID_PUESTO", parameters.ID_PUESTO},
                         { "@DESCRIPCION_PUESTO", parameters.DESCRIPCION_PUESTO},
                         { "@ID_T_ENT", parameters.ID_T_ENT},
                         { "@CVE_ID_ENT ", parameters.CVE_ID_ENT},
-                        { "@ID_AREA", parameters.ID_AREA}
+                        { "@ID_AREA", parameters.ID_AREA},
+
+                        { "@T_DSC_USUARIOSESION", parameters.USUARIOSESION },
+                        { "@T_DSC_SESION", parameters.GUID },
+                        { "@T_DSC_ACCION", parameters.ACCION },
+                        { "@ID_ACTIVIDAD", parameters.ID_ACTIVIDAD }
 
                     };
 
@@ -56,7 +60,7 @@ namespace SICIT.API.BI
                     {
                         { "@ID_T_ENT", parameters.ID_T_ENT},
                         { "@ID_AREA",parameters.ID_AREA },
-                        { "@CVE_ID_ENT",parameters.CVE_ID_ENT },
+                        { "@CVE_ID_ENT",parameters.CVE_ID_ENT }
                     };
 
             return response(new SqlHelperFactory().ExecuteList<Puestos>, ObjetosSQL.sp_obtenerPuestoID, values);
@@ -72,14 +76,21 @@ namespace SICIT.API.BI
                 Puestos,
                 Success<Puestos>> response = FuncionDelegado<Puestos>.obtenerResultadoString;
 
+            parameters.ID_ACTIVIDAD = (int)Enums.Actividad.MODIFICAR_PEUSTO;
+            parameters.ACCION = string.Format(MensajesBitacora.mensajePuestoEditar, parameters.ID_PUESTO);
+
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
                         { "@ID_PUESTO", parameters.ID_PUESTO},
                         { "@DESCRIPCION_PUESTO", parameters.DESCRIPCION_PUESTO},
                         { "@ID_T_ENT", parameters.ID_T_ENT},
                         { "@CVE_ID_ENT ", parameters.CVE_ID_ENT},
-                        { "@ID_AREA", parameters.ID_AREA}
+                        { "@ID_AREA", parameters.ID_AREA},
 
+                        { "@T_DSC_USUARIOSESION", parameters.USUARIOSESION },
+                        { "@T_DSC_SESION", parameters.GUID },
+                        { "@T_DSC_ACCION", parameters.ACCION },
+                        { "@ID_ACTIVIDAD", parameters.ID_ACTIVIDAD }
                     };
 
             return response(new SqlHelperFactory().ExecuteNonQueryString, ObjetosSQL.sp_ActualizarPuestos, values, parameters);
@@ -95,12 +106,20 @@ namespace SICIT.API.BI
                 Puestos,
                 Success<Puestos>> response = FuncionDelegado<Puestos>.obtenerResultadoString;
 
+            parameters.ID_ACTIVIDAD = (int)Enums.Actividad.ELIMINAR_PEUSTO;
+            parameters.ACCION = string.Format(MensajesBitacora.mensajePuestoEliminar, parameters.ID_PUESTO);
+
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
                         { "@ID_PUESTO", parameters.ID_PUESTO},
                         { "@ID_T_ENT", parameters.ID_T_ENT},
                         { "@CVE_ID_ENT ", parameters.CVE_ID_ENT},
-                        { "@ID_AREA", parameters.ID_AREA}
+                        { "@ID_AREA", parameters.ID_AREA},
+
+                        { "@T_DSC_USUARIOSESION", parameters.USUARIOSESION },
+                        { "@T_DSC_SESION", parameters.GUID },
+                        { "@T_DSC_ACCION", parameters.ACCION },
+                        { "@ID_ACTIVIDAD", parameters.ID_ACTIVIDAD }
 
                     };
 

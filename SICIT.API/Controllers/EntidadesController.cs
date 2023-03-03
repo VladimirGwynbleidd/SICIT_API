@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Microsoft.Ajax.Utilities;
@@ -30,10 +29,10 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Entidades - GetEntidades: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Entidades - GetEntidades: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
-            return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == true).DistinctBy(x => x.CVE_ID_ENT));
+            return Json(success.ResponseDataEnumerable);
         }
 
 
@@ -52,7 +51,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Entidades - GetEntidadesVigentes: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Entidades - GetEntidadesVigentes: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == true));
@@ -74,7 +73,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Entidades - GetEntidadesHistorial: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Entidades - GetEntidadesHistorial: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == false));
@@ -97,7 +96,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Usuarios - ObtenerUsuarios: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Entidades - GetTipoEntidades: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == true).DistinctBy(x => x.ID_T_ENT));
@@ -119,7 +118,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Entidades - GetEntidadesById: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Entidades - GetEntidadesById: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable);
@@ -140,18 +139,33 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Usuarios - ObtenerUsuarios: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Entidades - Post: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success);
         }
 
-        // PUT: api/Entidades/5
-        public void Put(int id, [FromBody] string value)
+        // PUT: api/Entidades/Put
+        [HttpPut]
+        [Route("Api/Entidades/Put")]
+        public IHttpActionResult Put([FromBody] Entidades entidades)
         {
+            ICatalogo<Entidades> CatalogoEntidades = new EntidadesCatalago();
+            Success<Entidades> success;
+
+            try
+            {
+                success = CatalogoEntidades.Update(entidades);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Entidades - Put: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
 
-        // DELETE: api/Entidades/5
+        // DELETE: api/Entidades/Delete
         [HttpDelete]
         [Route("Api/Entidades/Delete")]
         public IHttpActionResult Delete([FromBody] Entidades entidades)
@@ -165,7 +179,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Usuarios - ObtenerUsuarios: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Entidades - Delete: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success);

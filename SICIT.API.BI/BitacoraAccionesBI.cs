@@ -11,14 +11,24 @@ namespace SICIT.API.BI
 {
     public class BitacoraAccionesBI
     {
-        public Success<BitacoraAcciones> Get()
+        public Success<BitacoraAcciones> Get(BitacoraAcciones parameters)
         {
             Func<
                 FuncionDelegado<BitacoraAcciones>.ObtenerResultado,
                 string,
                 IDictionary<string, object>,
                 Success<BitacoraAcciones>> response = FuncionDelegado<BitacoraAcciones>.obtenerListaResultado;
-            return response(new SqlHelperFactory().ExecuteList<BitacoraAcciones>, ObjetosSQL.sp_obtenerBitacoraAcciones, null);
+
+
+            Dictionary<string, object> values = new Dictionary<string, object>
+                    {
+                        { "@fecha_inicial", DateTime.Parse(parameters.fecha_inicial) },
+                        { "@fecha_final", DateTime.Parse(parameters.fecha_final) },
+                        { "@USUARIO", parameters.USUARIO},
+                        { "@EVENTO", parameters.EVENTO},
+                    };
+
+            return response(new SqlHelperFactory().ExecuteList<BitacoraAcciones>, ObjetosSQL.sp_obtenerBitacoraAcciones, values);
         }
     }
 }

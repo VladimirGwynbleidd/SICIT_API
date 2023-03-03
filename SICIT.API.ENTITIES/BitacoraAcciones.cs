@@ -9,8 +9,10 @@ namespace SICIT.API.ENTITIES
     public class BitacoraAcciones
     {
         public string USUARIO { get; set; }
-        public string DESCRIPCION_ACTIVIDAD { get; set; }
-        public DateTime FECHA_ACTIVIDAD { get; set; }
+        public string EVENTO { get; set; }
+        public string fecha_final { get; set; }
+        public string fecha_inicial { get; set; }
+        public DateTime fecha_actividad { get; set; }
 
     }
 }

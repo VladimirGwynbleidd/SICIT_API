@@ -30,7 +30,7 @@ namespace SICIT.API.BI
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
                         { "@ID_T_ENT", id},
-            
+
                     };
 
             return response(new SqlHelperFactory().ExecuteList<Entidades>, ObjetosSQL.spGetIdEntidades, values);
@@ -46,16 +46,54 @@ namespace SICIT.API.BI
                 Entidades,
                 Success<Entidades>> response = FuncionDelegado<Entidades>.obtenerResultadoString;
 
+            parameters.ID_ACTIVIDAD = (int)Enums.Actividad.AGREGAR_ENTIDAD;
+            parameters.ACCION = MensajesBitacora.mensajeEntidadInsertar;
+
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
                         { "@ID_T_ENT", parameters.ID_T_ENT},
                         { "@CVE_ID_ENT", parameters.CVE_ID_ENT},
                         { "@DESC_ENT", parameters.DESC_ENT},
-                        { "@SIGLAS_ENT", parameters.SIGLAS_ENT}
+                        { "@SIGLAS_ENT", parameters.SIGLAS_ENT},
+
+                        { "@T_DSC_USUARIOSESION", parameters.USUARIOSESION },
+                        { "@T_DSC_SESION", parameters.GUID },
+                        { "@T_DSC_ACCION", parameters.ACCION },
+                        { "@ID_ACTIVIDAD", parameters.ID_ACTIVIDAD }
 
                     };
 
             return response(new SqlHelperFactory().ExecuteNonQueryString, ObjetosSQL.spInsertEntidades, values, parameters);
+        }
+
+
+        public Success<Entidades> Update(Entidades parameters)
+        {
+            Func<
+                FuncionDelegado<Entidades>.ObtenerResultadoString,
+                string,
+                Dictionary<string, object>,
+                Entidades,
+                Success<Entidades>> response = FuncionDelegado<Entidades>.obtenerResultadoString;
+
+            parameters.ID_ACTIVIDAD = (int)Enums.Actividad.MODIFICAR_ENTIDAD;
+            parameters.ACCION = string.Format(MensajesBitacora.mensajeEntidadEditar, parameters.ID_T_ENT);
+
+            Dictionary<string, object> values = new Dictionary<string, object>
+                    {
+                        { "@ID_T_ENT", parameters.ID_T_ENT},
+                        { "@CVE_ID_ENT", parameters.CVE_ID_ENT},
+                        { "@DESC_ENT", parameters.DESC_ENT},
+                        { "@SIGLAS_ENT", parameters.SIGLAS_ENT},
+
+                        { "@T_DSC_USUARIOSESION", parameters.USUARIOSESION },
+                        { "@T_DSC_SESION", parameters.GUID },
+                        { "@T_DSC_ACCION", parameters.ACCION },
+                        { "@ID_ACTIVIDAD", parameters.ID_ACTIVIDAD }
+
+                    };
+
+            return response(new SqlHelperFactory().ExecuteNonQueryString, ObjetosSQL.spUpdateEntidades, values, parameters);
         }
 
 
@@ -69,12 +107,18 @@ namespace SICIT.API.BI
                 Entidades,
                 Success<Entidades>> response = FuncionDelegado<Entidades>.obtenerResultadoString;
 
+            parameters.ID_ACTIVIDAD = (int)Enums.Actividad.ELIMINAR_ENTIDAD;
+            parameters.ACCION = string.Format(MensajesBitacora.mensajeEntidadEliminar, parameters.ID_T_ENT);
+
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
                         { "@ID_T_ENT", parameters.ID_T_ENT},
                         { "@CVE_ID_ENT", parameters.CVE_ID_ENT},
-                        { "@DESC_ENT", string.Empty},
-                        { "@SIGLAS_ENT", string.Empty}
+
+                        { "@T_DSC_USUARIOSESION", parameters.USUARIOSESION },
+                        { "@T_DSC_SESION", parameters.GUID },
+                        { "@T_DSC_ACCION", parameters.ACCION },
+                        { "@ID_ACTIVIDAD", parameters.ID_ACTIVIDAD }
 
                     };
 

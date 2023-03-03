@@ -22,7 +22,7 @@ namespace SICIT.API.Controllers
         [Route("Api/Perfil/GetPerfil")]
         public IHttpActionResult GetPerfil()
         {
-            ICatalogo<Perfiles> CatalogoPerfil= new PerfilesCatalogo();
+            ICatalogo<Perfiles> CatalogoPerfil = new PerfilesCatalogo();
             Success<Perfiles> success;
 
             try
@@ -31,7 +31,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Perfil - GetPerfil: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Perfil - GetPerfil: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable);
@@ -50,7 +50,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Perfil - GetTipoPuestosVigentes: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Perfil - GetTipoPuestosVigentes: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == 1));
@@ -71,7 +71,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Perfil - GetTipoPuestosHistorial: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Perfil - GetTipoPerfilHistorial: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == 0));
@@ -97,7 +97,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Perfiles - Insert: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Perfiles - Post: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success);
@@ -117,7 +117,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Perfiles - Put: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Perfiles - Put: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success);
@@ -137,7 +137,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Perfiles - Delete: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Perfiles - Delete: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success);

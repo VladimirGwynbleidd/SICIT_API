@@ -18,5 +18,12 @@ namespace SICIT.API.ENTITIES
 
         public int CVE_ID_ENT { get; set; }
 
+
+        ////    Para Bitacorizar    ////
+        public string USUARIOSESION { get; set; }
+        public string GUID { get; set; }
+        public string ACCION { get; set; }
+        public int ID_ACTIVIDAD { get; set; }
+
     }
 }

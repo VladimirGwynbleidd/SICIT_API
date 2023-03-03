@@ -62,10 +62,16 @@ namespace SICIT.API.ENTITIES
 
         //******************************************TIPO ENTIDAD***************************************************
         public const string sp_obtenerTipoEntidad = "SPS_SIC_SEG_CATTIPOENTIDAD";
+        public const string sp_InsertarTipoEntidad = "SPI_SIC_T_ENTIDAD";
+        public const string sp_ActualizarTipoEntidad = "SPU_SIC_T_ENTIDAD";
+        public const string sp_EliminarTipoEntidad = "SPU_SIC_T_BAJA_ENTIDAD";
 
         //******************************************AREAS***************************************************
         public const string sp_obtenerAreas = "SPS_SIC_SEG_AREAS";
         public const string sp_GetIdAreas = "SPS_SIC_OBTEN_AREA";
+        public const string sp_InsertarAreas = "SPI_SIC_SEG_AREAS";
+        public const string sp_ActualizarAreas = "SPU_SIC_SEG_AREAS";
+        public const string sp_EliminarAreas = "SPU_SIC_SEG_AREAS_BAJA";
 
         //******************************************PUESTOS***************************************************
         public const string sp_obtenerPuestoID = "SPS_SIC_OBTEN_PUESTO";
@@ -76,9 +82,9 @@ namespace SICIT.API.ENTITIES
 
 
         //******************************************BITACORA***************************************************
-        public const string sp_obtenerBitacoraAcciones = "SPS_SIC_SEG_BITACORA";
+        public const string sp_obtenerBitacoraAcciones = "SPS_SIC_SEG_BITACORA_ACCIONES";
         public const string sp_obtenerBitacoraSesiones = "SPS_SIC_SEG_SESIONES";
-
+        public const string sp_obtenerBitacoraSesionesFechas = "SPS_SIC_SEG_REGISTRO_SESIONES";
 
         //******************************************Perfil***************************************************
         public const string sp_obtenerPerfil = "SPS_SIC_SEG_PERFIL";
@@ -88,6 +94,9 @@ namespace SICIT.API.ENTITIES
 
         //******************************************MONITOR***************************************************
         public const string sp_obtenerMonitor = "SPS_SIC_MEN_MONITOR";
+
+        //******************************************MONITOR***************************************************
+        public const string sp_obtenerTipoConsulta = "SPS_SIC_CON_PAQUETES";
 
     }
 }

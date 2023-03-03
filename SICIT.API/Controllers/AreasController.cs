@@ -2,12 +2,8 @@
 using SICIT.API.ENTITIES;
 using SICIT.API.Interface;
 using SICIT.API.UTILITIES;
-using SICIT.BI.Interface;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -22,7 +18,7 @@ namespace SICIT.API.Controllers
         [Route("Api/Areas/GetAreas")]
         public IHttpActionResult GetAreas()
         {
-            IAreas<Areas> CatalogoAreas= new AreasCatalogo();
+            IAreas<Areas> CatalogoAreas = new AreasCatalogo();
             Success<Areas> success;
 
             try
@@ -31,7 +27,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Areas - GetAreas: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Areas - GetAreas: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable);
@@ -53,7 +49,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Areas - GetTipoAreasVigentes: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Areas - GetTipoAreasVigentes: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == 1));
@@ -75,7 +71,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Areas - GetTipoAreasHistorial: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Areas - GetTipoAreasHistorial: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == 0));
@@ -97,25 +93,71 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Areas - GetAreasById: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Areas - GetAreasById: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable);
         }
 
-        // POST: api/Areas
-        public void Post([FromBody]string value)
+        // POST: api/Areas/Post
+        [HttpPost]
+        [Route("Api/Areas/Post")]
+        public IHttpActionResult Post([FromBody] Areas areas)
         {
+
+            IAreas<Areas> CatalogoAreas = new AreasCatalogo();
+            Success<Areas> success;
+
+            try
+            {
+                success = CatalogoAreas.Insert(areas);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Areas - Post: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
 
         // PUT: api/Areas/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        [Route("Api/Areas/Put")]
+        public IHttpActionResult Put([FromBody] Areas areas)
         {
+            IAreas<Areas> CatalogoAreas = new AreasCatalogo();
+            Success<Areas> success;
+
+            try
+            {
+                success = CatalogoAreas.Update(areas);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Areas - Put: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
 
         // DELETE: api/Areas/5
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("Api/Areas/Delete")]
+        public IHttpActionResult Delete([FromBody] Areas areas)
         {
+            IAreas<Areas> CatalogoAreas = new AreasCatalogo();
+            Success<Areas> success;
+
+            try
+            {
+                success = CatalogoAreas.Delete(areas);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar Areas - Delete: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
     }
 }

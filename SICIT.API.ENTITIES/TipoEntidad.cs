@@ -16,6 +16,13 @@ namespace SICIT.API.ENTITIES
         public int VIG_FLAG { get; set; }
         public DateTime FECH_INI_VIG { get; set; }
         public DateTime FECH_FIN_VIG { get; set; }
+
+
+        ////    Para Bitacorizar    ////
+        public string USUARIOSESION { get; set; }
+        public string GUID { get; set; }
+        public string ACCION { get; set; }
+        public int ID_ACTIVIDAD { get; set; }
     }
 }
 

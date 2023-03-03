@@ -18,7 +18,7 @@ namespace SICIT.API.BI.Interface
 
         public Success<BitacoraAcciones> Get(BitacoraAcciones param = null)
         {
-            return cls.Get();
+            return cls.Get(param);
         }
 
         public Success<BitacoraAcciones> GetId(int id)

@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace SICIT.API.Controllers
 {
-    [EnableCors(origins:"*",headers:"*",methods:"*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [Route("api/[controller]/[action]")]
     public class PuestosController : ApiController
     {
@@ -28,7 +28,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Puestos - GetPuestos: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Puestos - GetPuestos: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable);
@@ -49,7 +49,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Puestos - GetTipoPuestosVigentes: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Puestos - GetTipoPuestosVigentes: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == 1));
@@ -71,7 +71,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Puestos - GetTipoPuestosHistorial: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Puestos - GetTipoPuestosHistorial: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == 0));
@@ -93,7 +93,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Areas - GetAreasById: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Areas - GetAreasById: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable);
@@ -102,7 +102,7 @@ namespace SICIT.API.Controllers
         // POST: api/Puestos
         [HttpPost]
         [Route("Api/Puestos/Post")]
-        public IHttpActionResult Post([FromBody]Puestos puestos)
+        public IHttpActionResult Post([FromBody] Puestos puestos)
         {
 
             IPuestos<Puestos> CatalogoPuestos = new PuestosCatalogo();
@@ -114,7 +114,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Perfiles - Insert: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Puestos - Post: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success);
@@ -134,7 +134,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Puestos - Update: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Puestos - Put: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success);
@@ -154,7 +154,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar Puestos - Delete: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Puestos - Delete: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success);

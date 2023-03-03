@@ -2,12 +2,8 @@
 using SICIT.API.ENTITIES;
 using SICIT.API.Interface;
 using SICIT.API.UTILITIES;
-using SICIT.BI.Interface;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -32,7 +28,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar TipoEntidad - GetTipoEntidad: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar TipoEntidad - GetTipoEntidad: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable);
@@ -52,7 +48,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar TipoEntidad - GetTipoEntidadVigentes: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar TipoEntidad - GetTipoEntidadVigentes: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == 1));
@@ -74,7 +70,7 @@ namespace SICIT.API.Controllers
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar TipoEntidad - GetTipoEntidadHistorial: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar TipoEntidad - GetTipoEntidadHistorial: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable.Where(x => x.VIG_FLAG == 0));
@@ -86,19 +82,65 @@ namespace SICIT.API.Controllers
             return "value";
         }
 
-        // POST: api/TipoEntidad
-        public void Post([FromBody]string value)
+        // POST: api/TipoEntidad/Post
+        [HttpPost]
+        [Route("Api/TipoEntidad/Post")]
+        public IHttpActionResult Post([FromBody] TipoEntidad tipoEntidad)
         {
+
+            ICatalogo<TipoEntidad> CatalogoTipoEntidad = new TipoEntidadCatalogo();
+            Success<TipoEntidad> success;
+
+            try
+            {
+                success = CatalogoTipoEntidad.Insert(tipoEntidad);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar TipoEntidad - Post: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
 
         // PUT: api/TipoEntidad/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        [Route("Api/TipoEntidad/Put")]
+        public IHttpActionResult Put([FromBody] TipoEntidad tipoEntidad)
         {
+            ICatalogo<TipoEntidad> CatalogoTipoEntidad = new TipoEntidadCatalogo();
+            Success<TipoEntidad> success;
+
+            try
+            {
+                success = CatalogoTipoEntidad.Update(tipoEntidad);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar TipoEntidad - Put: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
 
         // DELETE: api/TipoEntidad/5
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("Api/TipoEntidad/Delete")]
+        public IHttpActionResult Delete([FromBody] TipoEntidad tipoEntidad)
         {
+            ICatalogo<TipoEntidad> CatalogoTipoEntidad = new TipoEntidadCatalogo();
+            Success<TipoEntidad> success;
+
+            try
+            {
+                success = CatalogoTipoEntidad.Delete(tipoEntidad);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar TipoEntidad - Delete: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
     }
 }

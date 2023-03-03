@@ -3,7 +3,6 @@ using SICIT.API.ENTITIES;
 using SICIT.API.Interface;
 using SICIT.API.UTILITIES;
 using System;
-using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -11,45 +10,46 @@ namespace SICIT.API.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [Route("api/[controller]/[action]")]
-    public class BitacoraAccionesController : ApiController
+    public class ConsultasController : ApiController
     {
-        // GET: api/BitacoraAcciones
-        [HttpPost]
-        [Route("Api/BitacoraAcciones/GetBitacoraAcciones")]
-        public IHttpActionResult GetBitacoraAcciones(BitacoraAcciones bitacora)
+        // GET api/<controller>f
+        [HttpGet]
+        [Route("Api/Consultas/GetTipoConsultas")]
+        public IHttpActionResult GetTipoConsultas()
         {
-            ICatalogo<BitacoraAcciones> CatalogoBitacoraAcciones = new BitacoraAccionesCatalogo();
-            Success<BitacoraAcciones> success;
+
+            IConsultas<TipoConsulta> CatalogoTipoConsulta = new ConsultaCatalogo();
+            Success<TipoConsulta> success;
 
             try
             {
-                success = CatalogoBitacoraAcciones.Get(bitacora);
+                success = CatalogoTipoConsulta.Get();
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry("Error al ejecutar BitacoraAcciones - GetBitacoraAcciones: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
+                EventLog.WriteEntry("Error al ejecutar Consultas - GetTipoConsultas: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw new Exception(ex.Message);
             }
             return Json(success.ResponseDataEnumerable);
         }
 
-        // GET: api/BitacoraAcciones/5
+        // GET api/<controller>/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: api/BitacoraAcciones
+        // POST api/<controller>
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT: api/BitacoraAcciones/5
+        // PUT api/<controller>/5
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE: api/BitacoraAcciones/5
+        // DELETE api/<controller>/5
         public void Delete(int id)
         {
         }
