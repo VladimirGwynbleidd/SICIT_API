@@ -23,10 +23,6 @@ namespace SICIT.API.ENTITIES
         public int ACTIVO { get; set; }
 
 
-
-        public DateTime FECHA_INICIO { get; set; }
-        public DateTime FECHA_FIN { get; set; }
-
     }
 }
 

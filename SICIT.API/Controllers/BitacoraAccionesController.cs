@@ -14,16 +14,16 @@ namespace SICIT.API.Controllers
     public class BitacoraAccionesController : ApiController
     {
         // GET: api/BitacoraAcciones
-        [HttpPost]
+        [HttpGet]
         [Route("Api/BitacoraAcciones/GetBitacoraAcciones")]
-        public IHttpActionResult GetBitacoraAcciones(BitacoraAcciones bitacora)
+        public IHttpActionResult GetBitacoraAcciones()
         {
             ICatalogo<BitacoraAcciones> CatalogoBitacoraAcciones = new BitacoraAccionesCatalogo();
             Success<BitacoraAcciones> success;
 
             try
             {
-                success = CatalogoBitacoraAcciones.Get(bitacora);
+                success = CatalogoBitacoraAcciones.Get();
             }
             catch (Exception ex)
             {

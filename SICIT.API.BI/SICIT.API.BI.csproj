@@ -45,13 +45,11 @@
     <Compile Include="AreasBI.cs" />
     <Compile Include="BitacoraAccionesBI.cs" />
     <Compile Include="BitacoraSesionesBI.cs" />
-    <Compile Include="ConsultasBI.cs" />
     <Compile Include="EntidadesBI.cs" />
     <Compile Include="Interface\AccesoCatalogo.cs" />
     <Compile Include="Interface\AreasCatalogo.cs" />
     <Compile Include="Interface\BitacoraAccionesCatalogo.cs" />
     <Compile Include="Interface\BitacoraSesionesCatalogo.cs" />
-    <Compile Include="Interface\ConsultaCatalogo.cs" />
     <Compile Include="Interface\EntidadesCatalago.cs" />
     <Compile Include="Interface\ICatalogo.cs" />
     <Compile Include="Interface\MonitorCatalogo.cs" />
@@ -74,6 +72,10 @@
     <ProjectReference Include="..\SICIT.API.ENTITIES\SICIT.API.ENTITIES.csproj">
       <Project>{9133BFA6-6EA3-4985-9983-554AF1C98A58}</Project>
       <Name>SICIT.API.ENTITIES</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SICIT.API.UTILITIES\SICIT.API.UTILITIES.csproj">
+      <Project>{547A6A7C-3628-4BA8-96E6-C4C62019B041}</Project>
+      <Name>SICIT.API.UTILITIES</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

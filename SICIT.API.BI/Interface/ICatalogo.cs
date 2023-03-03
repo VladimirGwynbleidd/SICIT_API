@@ -11,6 +11,17 @@ namespace SICIT.API.Interface
         Success<T> Delete(T parameters);
     }
 
+    public interface IUsuarios<T> where T : class
+    {
+        Success<T> Get(T param = null);
+        Success<T> GetId(string id);
+        Success<T> Insert(T parameters);
+        Success<T> Update(T parameters);
+        Success<T> Delete(T parameters);
+        Success<T> ResetPassword(T parameters);
+    }
+
+
     public interface IEntidades<T> where T : class
     {
         Success<T> Get(T parameters);
@@ -131,14 +142,6 @@ namespace SICIT.API.Interface
     public interface IPerfiles<T> where T : class
     {
         Success<T> Get(T parameters);
-        Success<T> Add(T parameters);
-        Success<T> Update(T parameters);
-        Success<T> Delete(T parameters);
-    }
-
-    public interface IConsultas<T> where T : class
-    {
-        Success<T> Get(T parameters= null);
         Success<T> Add(T parameters);
         Success<T> Update(T parameters);
         Success<T> Delete(T parameters);

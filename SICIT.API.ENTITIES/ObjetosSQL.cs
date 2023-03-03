@@ -44,30 +44,28 @@ namespace SICIT.API.ENTITIES
 
         public const string spGetEntidades = "SPS_SIC_SEG_ENTIDAD";
         public const string spGetIdEntidades = "SPS_SIC_OBTEN_ENTIDAD";
-        public const string spInsertEntidades = "SPI_SIC_SEG_ALTA_ENTIDAD";
-        public const string spUpdateEntidades = "SPU_SIC_SEG_ACTUALIZA_ENTIDAD";
-        public const string spDeleteEntidades = "SPU_SIC_SEG_ELIMINA_ENTIDAD";
+        public const string spInsertEntidades = "SPI_SIC_SEG_ENTIDAD";
+        public const string spUpdateEntidades = "SPU_SIC_SEG_ENTIDAD";
+        public const string spDeleteEntidades = "SPU_SIC_SEG_ENTIDAD_BAJA";
 
 
 
         //******************************************USUARIOS***************************************************
         public const string sp_obtenerUsuarios = "SPS_SIC_SEG_USUARIOS";
-        public const string sp_InsertUsuario = "";
+        public const string sp_InsertUsuario = "SPI_SIC_SEG_USUARIOS";
+        public const string sp_ObtenerUsuario = "SPS_SIC_SEG_USUARIOS_GET_USER";
+        public const string sp_updateUsuarioUsuarios = "SPU_SIC_SEG_USUARIOS";
+        public const string sp_eliminarUsuarioUsuarios = "SPU_SIC_GRAL_USUARIO_BAJA";
+        public const string sp_updatePassword = "SPU_SIC_SEG_USUARIOS_PASSWORD";
 
 
 
         //******************************************TIPO ENTIDAD***************************************************
         public const string sp_obtenerTipoEntidad = "SPS_SIC_SEG_CATTIPOENTIDAD";
-        public const string sp_InsertarTipoEntidad = "SPI_SIC_T_ENTIDAD";
-        public const string sp_ActualizarTipoEntidad = "SPU_SIC_T_ENTIDAD";
-        public const string sp_EliminarTipoEntidad = "SPU_SIC_T_BAJA_ENTIDAD";
 
         //******************************************AREAS***************************************************
         public const string sp_obtenerAreas = "SPS_SIC_SEG_AREAS";
         public const string sp_GetIdAreas = "SPS_SIC_OBTEN_AREA";
-        public const string sp_InsertarAreas= "SPI_SIC_SEG_AREAS";
-        public const string sp_ActualizarAreas = "SPU_SIC_SEG_AREAS";
-        public const string sp_EliminarAreas = "SPU_SIC_SEG_AREAS_BAJA";
 
         //******************************************PUESTOS***************************************************
         public const string sp_obtenerPuestoID = "SPS_SIC_OBTEN_PUESTO";
@@ -78,9 +76,9 @@ namespace SICIT.API.ENTITIES
 
 
         //******************************************BITACORA***************************************************
-        public const string sp_obtenerBitacoraAcciones = "SPS_SIC_SEG_BITACORA_ACCIONES";
+        public const string sp_obtenerBitacoraAcciones = "SPS_SIC_SEG_BITACORA";
         public const string sp_obtenerBitacoraSesiones = "SPS_SIC_SEG_SESIONES";
-        public const string sp_obtenerBitacoraSesionesFechas = "SPS_SIC_SEG_REGISTRO_SESIONES"; 
+
 
         //******************************************Perfil***************************************************
         public const string sp_obtenerPerfil = "SPS_SIC_SEG_PERFIL";
@@ -91,7 +89,5 @@ namespace SICIT.API.ENTITIES
         //******************************************MONITOR***************************************************
         public const string sp_obtenerMonitor = "SPS_SIC_MEN_MONITOR";
 
-        //******************************************MONITOR***************************************************
-        public const string sp_obtenerTipoConsulta = "SPS_SIC_CON_PAQUETES";
     }
 }

@@ -1,5 +1,4 @@
-﻿using SICIT.API.BI;
-using SICIT.API.BI.Interface;
+﻿using SICIT.API.BI.Interface;
 using SICIT.API.ENTITIES;
 using SICIT.API.Interface;
 using SICIT.API.UTILITIES;
@@ -87,65 +86,19 @@ namespace SICIT.API.Controllers
             return "value";
         }
 
-        // POST: api/TipoEntidad/Post
-        [HttpPost]
-        [Route("Api/TipoEntidad/Post")]
-        public IHttpActionResult Post([FromBody] TipoEntidad tipoEntidad)
+        // POST: api/TipoEntidad
+        public void Post([FromBody]string value)
         {
-
-            ICatalogo<TipoEntidad> CatalogoTipoEntidad= new TipoEntidadCatalogo();
-            Success<TipoEntidad> success;
-
-            try
-            {
-                success = CatalogoTipoEntidad.Insert(tipoEntidad);
-            }
-            catch (Exception ex)
-            {
-                EventLog.WriteEntry("Error al ejecutar TipoEntidad - Insert: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
-                throw new Exception(ex.Message);
-            }
-            return Json(success);
         }
 
         // PUT: api/TipoEntidad/5
-        [HttpPut]
-        [Route("Api/TipoEntidad/Put")]
-        public IHttpActionResult Put([FromBody] TipoEntidad tipoEntidad)
+        public void Put(int id, [FromBody]string value)
         {
-            ICatalogo<TipoEntidad> CatalogoTipoEntidad = new TipoEntidadCatalogo();
-            Success<TipoEntidad> success;
-
-            try
-            {
-                success = CatalogoTipoEntidad.Update(tipoEntidad);
-            }
-            catch (Exception ex)
-            {
-                EventLog.WriteEntry("Error al ejecutar TipoEntidad - Update: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
-                throw new Exception(ex.Message);
-            }
-            return Json(success);
         }
 
         // DELETE: api/TipoEntidad/5
-        [HttpDelete]
-        [Route("Api/TipoEntidad/Delete")]
-        public IHttpActionResult Delete([FromBody] TipoEntidad tipoEntidad)
+        public void Delete(int id)
         {
-            ICatalogo<TipoEntidad> CatalogoTipoEntidad = new TipoEntidadCatalogo();
-            Success<TipoEntidad> success;
-
-            try
-            {
-                success = CatalogoTipoEntidad.Delete(tipoEntidad);
-            }
-            catch (Exception ex)
-            {
-                EventLog.WriteEntry("Error al ejecutar TipoEntidad - Delete: " + ex.Message, System.Diagnostics.EventLogEntryType.Error);
-                throw new Exception(ex.Message);
-            }
-            return Json(success);
         }
     }
 }
