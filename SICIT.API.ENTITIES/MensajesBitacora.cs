@@ -42,5 +42,12 @@
         public const string mensajePuestoEditar = "Se editó el Puesto {0}";
         public const string mensajePuestoEliminar = "Se eliminó el Puesto {0}";
 
+
+        /***********************************/
+        /*******   Bitácora USUARIO   ******/
+        /***********************************/
+        public const string mensajeUsuarioInsertar = "Se agregó el Usuario";
+        public const string mensajeUsuarioEditar = "Se editó el Usuario {0}";
+        public const string mensajeUsuarioEliminar = "Se eliminó el Usuario {0}";
     }
 }

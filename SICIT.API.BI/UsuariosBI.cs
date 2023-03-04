@@ -46,6 +46,9 @@ namespace SICIT.API.BI
 
             string encrypt = HashPassword.CreatePassword(parameters.USUARIO);
 
+            parameters.ID_ACTIVIDAD = (int)Enums.Actividad.AGREGAR_USUARIO;
+            parameters.ACCION = MensajesBitacora.mensajeUsuarioInsertar;
+
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
                         { "@USUARIO", parameters.USUARIO},
@@ -62,6 +65,11 @@ namespace SICIT.API.BI
                         { "@EMAIL", parameters.EMAIL},
                         { "@PRIMERA_SESION", 1},
                         { "@ENVIO_EMAIL", 1},
+
+                        { "@T_DSC_USUARIOSESION", parameters.USUARIOSESION },
+                        { "@T_DSC_SESION", parameters.GUID },
+                        { "@T_DSC_ACCION", parameters.ACCION },
+                        { "@ID_ACTIVIDAD", parameters.ID_ACTIVIDAD }
                     };
 
             return response(new SqlHelperFactory().ExecuteNonQuery, ObjetosSQL.sp_InsertUsuario, values, parameters);
@@ -75,6 +83,9 @@ namespace SICIT.API.BI
                 Dictionary<string, object>,
                 Usuarios,
                 Success<Usuarios>> response = FuncionDelegado<Usuarios>.obtenerResultado;
+
+            parameters.ID_ACTIVIDAD = (int)Enums.Actividad.MODIFICAR_USUARIO;
+            parameters.ACCION = string.Format(MensajesBitacora.mensajeUsuarioEditar, parameters.USUARIO);
 
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
@@ -91,6 +102,10 @@ namespace SICIT.API.BI
                         { "@PRIMERA_SESION", 0},
                         { "@ENVIO_EMAIL", 1},
 
+                        { "@T_DSC_USUARIOSESION", parameters.USUARIOSESION },
+                        { "@T_DSC_SESION", parameters.GUID },
+                        { "@T_DSC_ACCION", parameters.ACCION },
+                        { "@ID_ACTIVIDAD", parameters.ID_ACTIVIDAD }
                     };
 
             return response(new SqlHelperFactory().ExecuteNonQuery, ObjetosSQL.sp_updateUsuarioUsuarios, values, parameters);
@@ -105,10 +120,17 @@ namespace SICIT.API.BI
                 Usuarios,
                 Success<Usuarios>> response = FuncionDelegado<Usuarios>.obtenerResultadoString;
 
+            parameters.ID_ACTIVIDAD = (int)Enums.Actividad.ELIMINAR_USUARIO;
+            parameters.ACCION = string.Format(MensajesBitacora.mensajeUsuarioEliminar, parameters.USUARIO);
+
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
                         { "@USUARIO", parameters.USUARIO},
 
+                        { "@T_DSC_USUARIOSESION", parameters.USUARIOSESION },
+                        { "@T_DSC_SESION", parameters.GUID },
+                        { "@T_DSC_ACCION", parameters.ACCION },
+                        { "@ID_ACTIVIDAD", parameters.ID_ACTIVIDAD }
                     };
 
             return response(new SqlHelperFactory().ExecuteNonQueryString, ObjetosSQL.sp_eliminarUsuarioUsuarios, values, parameters);
