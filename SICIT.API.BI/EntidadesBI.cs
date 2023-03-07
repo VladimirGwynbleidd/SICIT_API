@@ -52,7 +52,7 @@ namespace SICIT.API.BI
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
                         { "@ID_T_ENT", parameters.ID_T_ENT},
-                        { "@CVE_ID_ENT", parameters.CVE_ID_ENT},
+                        //{ "@CVE_ID_ENT", parameters.CVE_ID_ENT},
                         { "@DESC_ENT", parameters.DESC_ENT},
                         { "@SIGLAS_ENT", parameters.SIGLAS_ENT},
 

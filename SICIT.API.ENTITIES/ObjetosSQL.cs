@@ -42,11 +42,14 @@ namespace SICIT.API.ENTITIES
         //*******************************************************************************************************
 
 
+
+
+        //******************************************ENTIDAD***************************************************
         public const string spGetEntidades = "SPS_SIC_SEG_ENTIDAD";
         public const string spGetIdEntidades = "SPS_SIC_OBTEN_ENTIDAD";
-        public const string spInsertEntidades = "SPI_SIC_SEG_ENTIDAD";
-        public const string spUpdateEntidades = "SPU_SIC_SEG_ENTIDAD";
-        public const string spDeleteEntidades = "SPU_SIC_SEG_ENTIDAD_BAJA";
+        public const string spInsertEntidades = "SPI_SIC_SEG_ALTA_ENTIDAD";
+        public const string spUpdateEntidades = "SPU_SIC_SEG_ACTUALIZA_ENTIDAD";
+        public const string spDeleteEntidades = "SPU_SIC_SEG_ELIMINA_ENTIDAD";
 
 
 

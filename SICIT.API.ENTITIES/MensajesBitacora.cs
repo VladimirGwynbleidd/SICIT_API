@@ -49,5 +49,10 @@
         public const string mensajeUsuarioInsertar = "Se agregó el Usuario";
         public const string mensajeUsuarioEditar = "Se editó el Usuario {0}";
         public const string mensajeUsuarioEliminar = "Se eliminó el Usuario {0}";
+        public const string mensajeUsuarioUpdatePassword = "Se modificó la contraseña del Usuario {0}";
+
+
+
+
     }
 }

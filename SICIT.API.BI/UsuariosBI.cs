@@ -93,6 +93,7 @@ namespace SICIT.API.BI
                         { "@ID_PERFIL", parameters.ID_PERFIL},
                         { "@ID_PUESTO", parameters.ID_PUESTO},
                         { "@ID_T_ENT", parameters.ID_T_ENT },
+                        { "@ID_AREA", parameters.ID_AREA},
                         { "@CVE_ID_ENT", parameters.CVE_ID_ENT},
                         { "@NOMBRES", parameters.NOMBRES},
                         { "@APELLIDO_PATERNO", parameters.APELLIDO_PATERNO},
@@ -156,11 +157,21 @@ namespace SICIT.API.BI
                 encrypt = parameters.CONTRASENA;
             }
 
+            parameters.ID_ACTIVIDAD = (int)Enums.Actividad.MODIFICAR_USUARIO;
+            parameters.ACCION = string.Format(MensajesBitacora.mensajeUsuarioUpdatePassword, parameters.USUARIO);
+
+
             Dictionary<string, object> values = new Dictionary<string, object>
                     {
                         { "@USUARIO", parameters.USUARIO},
                         { "@CONTRASENA", encrypt},
-                        { "@PRIMERA_SESION", parameters.PRIMERA_SESION}
+                        { "@PRIMERA_SESION", parameters.PRIMERA_SESION},
+
+
+                        { "@T_DSC_USUARIOSESION", parameters.USUARIO },
+                        { "@T_DSC_SESION", Guid.NewGuid().ToString().Substring(0, 24)},
+                        { "@T_DSC_ACCION", parameters.ACCION },
+                        { "@ID_ACTIVIDAD", parameters.ID_ACTIVIDAD }
                     };
 
             return response(new SqlHelperFactory().ExecuteNonQuery, ObjetosSQL.sp_updatePassword, values, parameters);
