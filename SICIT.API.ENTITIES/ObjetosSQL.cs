@@ -41,6 +41,8 @@ namespace SICIT.API.ENTITIES
         //*
         //*******************************************************************************************************
 
+        //****************************************** ACCESO ***************************************************
+        public const string spGetParametros = "SPS_SIC_GRA_PARAMETROS";
 
 
 
@@ -84,10 +86,16 @@ namespace SICIT.API.ENTITIES
         public const string sp_EliminarPuestos = "SPU_SIC_SEG_ELIMINA_PUESTO";
 
 
-        //******************************************BITACORA***************************************************
+        //*************************************BITACORA ACCIONES***********************************************
         public const string sp_obtenerBitacoraAcciones = "SPS_SIC_SEG_BITACORA_ACCIONES";
-        public const string sp_obtenerBitacoraSesiones = "SPS_SIC_SEG_SESIONES";
         public const string sp_obtenerBitacoraSesionesFechas = "SPS_SIC_SEG_REGISTRO_SESIONES";
+
+
+        //******************************************BITACORA SESIONES******************************************
+        public const string sp_obtenerBitacoraSesiones = "SPS_SIC_SEG_SESIONES";
+        public const string sp_agregarBitacoraSesiones = "SPI_SIC_GRA_BITACORA_SESION";
+        public const string sp_ConsultarBitacoraSesionesFechas = "SPS_SIC_GRA_BITACORA_SESION";
+
 
         //******************************************Perfil***************************************************
         public const string sp_obtenerPerfil = "SPS_SIC_SEG_PERFIL";

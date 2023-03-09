@@ -10,7 +10,25 @@ namespace SICIT.API.BI
 {
     public class BitacoraSesionesBI
     {
-        public Success<BitacoraSesiones> Get()
+        public Success<BitacoraSesiones> Get(BitacoraSesiones parameters)
+        {
+            Func<
+                FuncionDelegado<BitacoraSesiones>.ObtenerResultado,
+                string,
+                IDictionary<string, object>,
+                Success<BitacoraSesiones>> response = FuncionDelegado<BitacoraSesiones>.obtenerListaResultado;
+
+            Dictionary<string, object> values = new Dictionary<string, object>
+            {
+                { "@F_FECH_DESDE", parameters.F_FECH_DESDE},
+                { "@F_FECH_HASTA", parameters.F_FECH_HASTA }
+            };
+
+
+            return response(new SqlHelperFactory().ExecuteList<BitacoraSesiones>, ObjetosSQL.sp_ConsultarBitacoraSesionesFechas, values);
+        }
+
+        public Success<BitacoraSesiones> ObtenerBitacora()
         {
             Func<
                 FuncionDelegado<BitacoraSesiones>.ObtenerResultado,
@@ -19,5 +37,24 @@ namespace SICIT.API.BI
                 Success<BitacoraSesiones>> response = FuncionDelegado<BitacoraSesiones>.obtenerListaResultado;
             return response(new SqlHelperFactory().ExecuteList<BitacoraSesiones>, ObjetosSQL.sp_obtenerBitacoraSesiones, null);
         }
+
+        public Success<BitacoraSesiones> AgregarBitacora(BitacoraSesiones parameters)
+        {
+            Func<
+                FuncionDelegado<BitacoraSesiones>.ObtenerResultadoString,
+                string,
+                Dictionary<string, object>,
+                BitacoraSesiones,
+                Success<BitacoraSesiones>> response = FuncionDelegado<BitacoraSesiones>.obtenerResultadoString;
+            Dictionary<string, object> values = new Dictionary<string, object>
+            {
+                { "@ID_SESION", parameters.ID_SESION },
+                { "@USUARIO", parameters.USUARIO },
+                { "@DIRECCION_IP", parameters.DIRECCION_IP }
+            };
+
+            return response(new SqlHelperFactory().ExecuteNonQueryString, ObjetosSQL.sp_agregarBitacoraSesiones, values, parameters);
+        }
+
     }
 }

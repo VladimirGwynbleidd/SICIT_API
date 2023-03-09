@@ -15,12 +15,17 @@ namespace SICIT.API.ENTITIES
         public int ID_AREA { get; set; }
 
         public string DIRECCION_IP { get; set; }
-        public DateTime HORA_INICIO { get; set; }
-        public DateTime HORA_FIN { get; set; }
-        public DateTime FECHA { get; set; }
+        public string HORA_INICIO { get; set; }
+        public string HORA_FIN { get; set; }
+        public string FECHA { get; set; }
         public int TIEMPO_VIDA { get; set; }
 
         public int ACTIVO { get; set; }
+
+        public DateTime F_FECH_DESDE { get; set; }
+        public DateTime F_FECH_HASTA { get; set; }
+
+
 
 
     }

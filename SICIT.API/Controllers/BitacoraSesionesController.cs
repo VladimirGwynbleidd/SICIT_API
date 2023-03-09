@@ -21,12 +21,12 @@ namespace SICIT.API.Controllers
         [Route("Api/BitacoraSesiones/GetBitacoraSesiones")]
         public IHttpActionResult GetBitacoraSesiones()
         {
-            ICatalogo<BitacoraSesiones> CatalogoBitacoraSesiones = new BitacoraSesionesCatalogo();
+            IBitacoraSesiones<BitacoraSesiones> CatalogoBitacoraSesiones = new BitacoraSesionesCatalogo();
             Success<BitacoraSesiones> success;
 
             try
             {
-                success = CatalogoBitacoraSesiones.Get();
+                success = CatalogoBitacoraSesiones.ObtenerBitacora();
             }
             catch (Exception ex)
             {
@@ -37,12 +37,13 @@ namespace SICIT.API.Controllers
         }
 
 
+
         // POST: api/GetBitacoraSesionesFechas
         [HttpPost]
         [Route("Api/BitacoraSesiones/GetBitacoraSesionesFechas")]
         public IHttpActionResult GetBitacoraSesionesFechas(BitacoraSesiones bitacora)
         {
-            ICatalogo<BitacoraSesiones> CatalogoBitacoraSesiones = new BitacoraSesionesCatalogo();
+            IBitacoraSesiones<BitacoraSesiones> CatalogoBitacoraSesiones = new BitacoraSesionesCatalogo();
             Success<BitacoraSesiones> success;
 
 
@@ -58,14 +59,25 @@ namespace SICIT.API.Controllers
             return Json(success.ResponseDataEnumerable);
         }
 
-        // PUT: api/BitacoraSesiones/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
 
-        // DELETE: api/BitacoraSesiones/5
-        public void Delete(int id)
+        [HttpPost]
+        [Route("Api/BitacoraSesiones/AgregarBitacora")]
+        public IHttpActionResult AgregarBitacora([FromBody] BitacoraSesiones bitacora)
         {
+
+            IBitacoraSesiones<BitacoraSesiones> CatalogoBitacoraSesiones = new BitacoraSesionesCatalogo();
+            Success<BitacoraSesiones> success;
+
+            try
+            {
+                success = CatalogoBitacoraSesiones.AgregarBitacora(bitacora);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry("Error al ejecutar BitacoraSesiones - AgregarBitacora: " + ex.InnerException.Message, System.Diagnostics.EventLogEntryType.Error);
+                throw new Exception(ex.Message);
+            }
+            return Json(success);
         }
     }
 }

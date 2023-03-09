@@ -8,30 +8,36 @@ using System.Threading.Tasks;
 
 namespace SICIT.API.BI.Interface
 {
-    public class BitacoraSesionesCatalogo : ICatalogo<BitacoraSesiones>
+    public class BitacoraSesionesCatalogo : IBitacoraSesiones<BitacoraSesiones>
     {
         private readonly BitacoraSesionesBI cls = new BitacoraSesionesBI();
-        public Success<BitacoraSesiones> Delete(BitacoraSesiones parameters)
+
+        public Success<BitacoraSesiones> ObtenerBitacora(BitacoraSesiones param = null)
         {
-            throw new NotImplementedException();
+            return cls.ObtenerBitacora();
         }
 
-        public Success<BitacoraSesiones> Get(BitacoraSesiones param = null)
+        public Success<BitacoraSesiones> AgregarBitacora(BitacoraSesiones parameters)
         {
-            return cls.Get();
+            return cls.AgregarBitacora(parameters);
         }
 
-        public Success<BitacoraSesiones> GetId(int id)
+        public Success<BitacoraSesiones> Get(BitacoraSesiones parameters)
         {
-            throw new NotImplementedException();
+            return cls.Get(parameters);
         }
 
-        public Success<BitacoraSesiones> Insert(BitacoraSesiones parameters)
+        public Success<BitacoraSesiones> Add(BitacoraSesiones parameters)
         {
             throw new NotImplementedException();
         }
 
         public Success<BitacoraSesiones> Update(BitacoraSesiones parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Success<BitacoraSesiones> Delete(BitacoraSesiones parameters)
         {
             throw new NotImplementedException();
         }

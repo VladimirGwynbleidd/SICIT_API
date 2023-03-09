@@ -137,6 +137,8 @@ namespace SICIT.API.Interface
         Success<T> Add(T parameters);
         Success<T> Update(T parameters);
         Success<T> Delete(T parameters);
+        Success<T> ObtenerBitacora(T parameters = null);
+        Success<T> AgregarBitacora(T parameters);
     }
 
     public interface IPerfiles<T> where T : class
@@ -155,5 +157,10 @@ namespace SICIT.API.Interface
         Success<T> Delete(T parameters);
     }
 
+
+    public interface IParametros<T> where T : class
+    {
+        Success<T> ObtenerParametros(T parameters = null);
+    }
 }
 
