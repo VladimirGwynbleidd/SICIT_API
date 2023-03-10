@@ -162,5 +162,11 @@ namespace SICIT.API.Interface
     {
         Success<T> ObtenerParametros(T parameters = null);
     }
+
+    public interface IAccion<T> where T : class
+    {
+        Success<T> AgregarAccion(T parameters);
+    }
+
 }
 

@@ -21,7 +21,9 @@ namespace SICIT.API.BI
             Dictionary<string, object> values = new Dictionary<string, object>
             {
                 { "@F_FECH_DESDE", parameters.F_FECH_DESDE},
-                { "@F_FECH_HASTA", parameters.F_FECH_HASTA }
+                { "@F_FECH_HASTA", parameters.F_FECH_HASTA },
+                //{ "@USUARIO", null },
+                //{ "@ACTIVO", null},
             };
 
 

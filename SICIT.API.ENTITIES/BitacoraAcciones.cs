@@ -12,7 +12,7 @@ namespace SICIT.API.ENTITIES
         public string EVENTO { get; set; }
         public string fecha_final { get; set; }
         public string fecha_inicial { get; set; }
-        public DateTime fecha_actividad { get; set; }
+        public string fecha_actividad { get; set; }
 
     }
 }

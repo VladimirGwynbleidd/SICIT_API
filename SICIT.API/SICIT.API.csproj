@@ -133,6 +133,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccionController.cs" />
     <Compile Include="Controllers\AreasController.cs" />
     <Compile Include="Controllers\BitacoraAccionesController.cs" />
     <Compile Include="Controllers\BitacoraSesionesController.cs" />

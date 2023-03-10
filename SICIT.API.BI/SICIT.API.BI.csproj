@@ -42,12 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoBI.cs" />
+    <Compile Include="AccionBI.cs" />
     <Compile Include="AreasBI.cs" />
     <Compile Include="BitacoraAccionesBI.cs" />
     <Compile Include="BitacoraSesionesBI.cs" />
     <Compile Include="ConsultasBI.cs" />
     <Compile Include="EntidadesBI.cs" />
     <Compile Include="Interface\AccesoCatalogo.cs" />
+    <Compile Include="Interface\AccionCatalogo.cs" />
     <Compile Include="Interface\AreasCatalogo.cs" />
     <Compile Include="Interface\BitacoraAccionesCatalogo.cs" />
     <Compile Include="Interface\BitacoraSesionesCatalogo.cs" />
