@@ -22,8 +22,8 @@ namespace SICIT.API.ENTITIES
 
         public int ACTIVO { get; set; }
 
-        public DateTime F_FECH_DESDE { get; set; }
-        public DateTime F_FECH_HASTA { get; set; }
+        public string F_FECH_DESDE { get; set; }
+        public string F_FECH_HASTA { get; set; }
 
 
 
